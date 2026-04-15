@@ -1,9 +1,3 @@
-function App() {
-  return (
-    <>
-      <h1>hello, world Butun dunyoga salom</h1>
-    </>
-  );
-}
+const App = () => null;
 
 export default App;
