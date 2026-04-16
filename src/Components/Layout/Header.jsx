@@ -10,14 +10,18 @@ import {
   X,
   ChevronDown,
 } from "lucide-react";
+
 import useCartStore from "../../Store/cartStore";
 import logo from "../../assets/icons/logo.svg";
+import menu from "../../assets/icons/menu.svg";
 
 const NAV_LINKS = [
-  { label: "Home", to: "/" },
-  { label: "Shop", to: "/shop" },
-  { label: "Blog", to: "/blog" },
-  { label: "FAQ", to: "/faq" },
+  { label: "Home", to: "/", dropdown: false },
+  { label: "Category", to: "/shop", dropdown: true },
+  { label: "Products", to: "/Products", dropdown: true },
+  { label: "Pages", to: "/shop", dropdown: true },
+  { label: "Blog", to: "/blog", dropdown: true },
+  { label: "Elements", to: "/Products", dropdown: true },
 ];
 
 export default function Header() {
@@ -25,7 +29,6 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Получаем количество товаров из Zustand
   const items = useCartStore((s) => s.items);
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
 
@@ -34,133 +37,193 @@ export default function Header() {
     if (searchQuery.trim()) {
       navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery("");
+      setMobileMenuOpen(false);
     }
   }
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      {/* ── Верхняя строка ── */}
-      <div className="border-b border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-9">
-          {/* Иконка мобильного меню */}
+      {/* ================= TOP ROW ================= */}
+      <div className="border-b border-gray-100 relative z-40 py-[10px]">
+        <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
+          <button className="hidden lg:block">
+            <img src={menu} alt="" className="" />
+          </button>
           <button
             className="lg:hidden text-gray-500"
-            onClick={() => setMobileMenuOpen((v) => !v)}
-            aria-label="Меню"
+            onClick={() => setMobileMenuOpen(true)}
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            <Menu size={20} />
           </button>
 
-          {/* Навигация (десктоп) */}
+          {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-sm text-gray-600 hover:text-[#E44B26] transition-colors"
+                className="flex items-center text-sm text-gray-600 hover:text-[#E44B26]"
               >
                 {link.label}
+
+                {link.label !== "Home" && (
+                  <ChevronDown size={14} className="ml-1" />
+                )}
               </Link>
             ))}
           </nav>
 
-          {/* Телефон */}
           <a
             href="tel:+1234567890"
             className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#E44B26]"
           >
             <Phone size={13} />
-            +123 (456) 7890
+            +123 (456) (7890)
           </a>
         </div>
       </div>
 
-      {/* ── Нижняя строка ── */}
-      <div className="max-w-[1200px] mx-auto px-4 flex items-center gap-4 h-16">
-        {/* Логотип */}
+      {/* ================= DESKTOP ROW ================= */}
+      <div className="hidden lg:flex max-w-[1200px] mx-auto px-4 py-[15px] items-center gap-4 relative z-40">
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <img src={logo} alt="Foodzy" className="" />
+          <img src={logo} alt="Foodzy" />
         </Link>
 
-        {/* Поиск */}
         <form onSubmit={handleSearch} className="flex-1 max-w-xl flex">
           <input
-            type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for items..."
-            className="flex-1 border border-gray-200 rounded-l-md px-4 py-2 text-sm
-                       focus:outline-none focus:border-[#E44B26] transition-colors"
+            className="flex-1 border px-4 py-2 rounded-l-md text-sm"
           />
-          {/* Выбор категории */}
-          <select
-            className="border-y border-gray-200 px-3 text-sm text-gray-500
-                       focus:outline-none bg-white"
-          >
+
+          <select className="border-y px-3 text-sm bg-white">
             <option>All Categories</option>
           </select>
-          {/* Кнопка поиска */}
-          <button
-            type="submit"
-            className="bg-[#E44B26] hover:bg-[#c93f1e] text-white px-4 rounded-r-md
-                       transition-colors flex items-center"
-            aria-label="Поиск"
-          >
+
+          <button className="bg-[#E44B26] text-white px-4 rounded-r-md">
             <Search size={16} />
           </button>
         </form>
 
-        {/* Иконки */}
         <div className="flex items-center gap-4 ml-auto">
-          {/* Аккаунт */}
-          <button className="flex items-center gap-1.5 text-sm text-gray-600 hover:text-[#E44B26] transition-colors">
+          <button className="flex items-center gap-1.5 text-sm">
             <User size={18} />
-            <span className="hidden md:inline">Account</span>
+            Account
           </button>
 
-          {/* Вишлист */}
-          <button className="flex items-center gap-1.5 text-sm text-gray-600 hover:text-[#E44B26] transition-colors">
+          <button className="flex items-center gap-1.5 text-sm">
             <Heart size={18} />
-            <span className="hidden md:inline">Wishlist</span>
+            Wishlist
           </button>
 
-          {/* Корзина */}
           <Link
             to="/cart"
-            className="flex items-center gap-1.5 text-sm text-gray-600 hover:text-[#E44B26] transition-colors relative"
+            className="flex items-center gap-1.5 text-sm relative"
           >
-            <div className="relative">
-              <ShoppingCart size={18} />
-              {/* Счётчик */}
-              {totalItems > 0 && (
-                <span
-                  className="absolute -top-2 -right-2 bg-[#E44B26] text-white text-[10px]
-                                 w-4 h-4 rounded-full flex items-center justify-center font-bold"
-                >
-                  {totalItems > 9 ? "9+" : totalItems}
-                </span>
-              )}
-            </div>
-            <span className="hidden md:inline">Cart</span>
+            <ShoppingCart size={18} />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-[#E44B26] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                {totalItems > 9 ? "9+" : totalItems}
+              </span>
+            )}
+            Cart
           </Link>
         </div>
       </div>
 
-      {/* ── Мобильное меню ── */}
-      {mobileMenuOpen && (
-        <nav className="lg:hidden border-t border-gray-100 bg-white px-4 py-3 flex flex-col gap-3">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm text-gray-700 hover:text-[#E44B26] py-1"
-            >
-              {link.label}
+      {/* ================= MOBILE OVERLAY ================= */}
+      <div
+        className={`fixed inset-0 z-[9999] lg:hidden transition-all duration-300 ${
+          mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* overlay */}
+        <div
+          className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+        />
+
+        {/* sidebar */}
+        <div
+          className={`absolute top-0 left-0 h-full w-72 bg-white shadow-2xl rounded-r-2xl z-[10000]
+          transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+          ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        >
+          {/* header */}
+          <div className="flex items-center justify-between p-4 border-b">
+            <Link to="/">
+              <img src={logo} alt="Foodzy" className="h-7" />
             </Link>
-          ))}
-        </nav>
-      )}
+
+            <button onClick={() => setMobileMenuOpen(false)}>
+              <X size={20} />
+            </button>
+          </div>
+
+          {/* content */}
+          <div className="p-4 flex flex-col gap-5 overflow-y-auto h-full">
+            {/* 🔥 MOBILE SEARCH + CATEGORY (FIXED) */}
+            <form onSubmit={handleSearch} className="flex flex-col gap-2">
+              <input
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search for items..."
+                className="border px-3 py-2 rounded-md text-sm"
+              />
+
+              <div className="flex gap-2">
+                <select className="flex-1 border px-3 py-2 rounded-md text-sm bg-white">
+                  <option>All Categories</option>
+                </select>
+
+                <button
+                  type="submit"
+                  className="bg-[#E44B26] text-white px-4 rounded-md flex items-center justify-center"
+                >
+                  <Search size={16} />
+                </button>
+              </div>
+            </form>
+
+            {/* icons */}
+            <div className="flex flex-col gap-3 pt-[25px]">
+              <button className="flex items-center gap-2">
+                <User size={18} /> Account
+              </button>
+
+              <button className="flex items-center gap-2">
+                <Heart size={18} /> Wishlist
+              </button>
+
+              <Link to="/cart" className="flex items-center gap-2">
+                <ShoppingCart size={18} />
+                Cart
+              </Link>
+            </div>
+
+            {/* nav */}
+            <nav className="flex flex-col border-t pt-3">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between py-3 border-b text-gray-700 hover:text-[#E44B26]"
+                >
+                  <span>{link.label}</span>
+
+                  {link.label !== "Home" && (
+                    <ChevronDown size={16} className="opacity-70" />
+                  )}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
