@@ -7,6 +7,7 @@ import phoneIcon from "../../assets/icons/footer-phone-icon.svg";
 import facebookIcon from "../../assets/icons/facebook.svg";
 import xIcon from "../../assets/icons/x.svg";
 import instagramIcon from "../../assets/icons/instagram.svg";
+import ballonIcon from "../../assets/icons/ballon.svg";
 import footerImg1 from "../../assets/icons/footer-image1.svg";
 import footerImg2 from "../../assets/icons/footer-image2.svg";
 import footerImg3 from "../../assets/icons/footer-image3.svg";
@@ -31,6 +32,13 @@ const CATEGORY_LINKS = [
   { label: "Fast Food", to: "/shop?category=fast-food" },
 ];
 
+const SOCIAL_LINKS = [
+  { icon: facebookIcon, label: "Facebook", href: "#" },
+  { icon: xIcon, label: "X (Twitter)", href: "#" },
+  { icon: instagramIcon, label: "Instagram", href: "#" },
+  { icon: ballonIcon, label: "Ballon", href: "#" },
+];
+
 const GALLERY_IMGS = [
   footerImg1,
   footerImg2,
@@ -41,49 +49,51 @@ const GALLERY_IMGS = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
   return (
     <footer className="mt-16 border-t border-[#E9E9E9] bg-[#F7F7F8]">
-      <div className="shell-header grid grid-cols-1 gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <Link to="/" className="mb-5 flex items-center gap-3">
-            <img src={logo} alt="Foodzy" className="w-20" />
+      <div className="shell-header grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[440px_1fr_1fr_416px] gap-x-4 gap-y-10 py-14">
+        {/* 1. Logo and Info - Width: 440px */}
+        <div className="lg:w-[350px]">
+          <Link to="/" className="mb-6 block">
+            <img src={logo} alt="Foodzy" className="w-[130px]" />
           </Link>
-
-          <p className="mb-6 max-w-[320px] text-[16px] leading-8 text-gray-500">
+          <p className="mb-6 text-[14px] leading-6 text-[#7E7E7E]">
             FoodTrove is the biggest market of grocery products. Get your daily
             needs from our store.
           </p>
-
-          <ul className="space-y-4">
-            <li className="flex items-start gap-3 text-[15px] leading-7 text-gray-500">
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3 text-[14px] text-[#7E7E7E]">
               <img
                 src={locationIcon}
                 alt=""
-                className="w-4 h-4 mt-0.5 flex-shrink-0"
+                className="w-4 h-4 mt-1 flex-shrink-0"
               />
-              51 Green St. Huntington ohio beach ontario, NY 11746 KY 4783, USA.
+              <span>
+                51 Green St. Huntington ohio beach ontario, NY 11746 KY 4783,
+                USA.
+              </span>
             </li>
-            <li className="flex items-center gap-3 text-[15px] text-gray-500">
+            <li className="flex items-center gap-3 text-[14px] text-[#7E7E7E]">
               <img src={emailIcon} alt="" className="w-4 h-4 flex-shrink-0" />
-              example@email.com
+              <span>example@email.com</span>
             </li>
-            <li className="flex items-center gap-3 text-[15px] text-gray-500">
+            <li className="flex items-center gap-3 text-[14px] text-[#7E7E7E]">
               <img src={phoneIcon} alt="" className="w-4 h-4 flex-shrink-0" />
-              +91 123 4567890
+              <span>+91 123 4567890</span>
             </li>
           </ul>
         </div>
 
-        <div>
-          <h4 className="mb-6 text-[20px] font-semibold text-gray-900">
-            Company
-          </h4>
-          <ul className="space-y-4">
+        {/* 2. Company Links */}
+        <div className="">
+          <h4 className="mb-7 text-[18px] font-bold text-[#253D4E]">Company</h4>
+          <ul className="space-y-3">
             {COMPANY_LINKS.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="text-[15px] text-gray-500 transition-colors hover:text-[#E44B26]"
+                  className="text-[14px] text-[#7E7E7E] transition-colors hover:text-[#3BB77E]"
                 >
                   {link.label}
                 </Link>
@@ -92,16 +102,17 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="mb-6 text-[20px] font-semibold text-gray-900">
+        {/* 3. Category Links */}
+        <div className="">
+          <h4 className="mb-7 text-[18px] font-bold text-[#253D4E]">
             Category
           </h4>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {CATEGORY_LINKS.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="text-[15px] text-gray-500 transition-colors hover:text-[#E44B26]"
+                  className="text-[14px] text-[#7E7E7E] transition-colors hover:text-[#3BB77E]"
                 >
                   {link.label}
                 </Link>
@@ -110,60 +121,51 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="mb-6 text-[20px] font-semibold text-gray-900">
+        {/* 4. Newsletter & Socials - Width: 416px */}
+        <div className="w-full lg:w-[416px]">
+          <h4 className="mb-7 text-[18px] font-bold text-[#253D4E]">
             Subscribe Our Newsletter
           </h4>
 
-          <div className="mb-6 flex">
+          <div className="mb-6 flex overflow-hidden rounded-md border border-[#ECECEC] bg-white">
             <input
               type="email"
               placeholder="Search here..."
-              className="flex-1 border border-gray-200 rounded-l-md px-4 py-3 text-sm
-                         focus:outline-none focus:border-[#E44B26] transition-colors"
+              className="flex-1 px-4 py-3 text-[14px] focus:outline-none"
             />
-            <button
-              className="rounded-r-md bg-white px-4 text-gray-900 transition-colors hover:text-[#E44B26]"
-              aria-label="Subscribe"
-            >
-              <Send size={15} />
+            <button className="bg-[#3BB77E] px-5 text-white transition-colors hover:bg-[#29A56C]">
+              <Send size={16} />
             </button>
           </div>
 
-          <div className="mb-6 flex items-center gap-2">
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-200 hover:opacity-70 transition-opacity"
-            >
-              <img src={facebookIcon} alt="Facebook" className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
-              aria-label="X (Twitter)"
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-200 hover:opacity-70 transition-opacity"
-            >
-              <img src={xIcon} alt="X" className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-200 hover:opacity-70 transition-opacity"
-            >
-              <img src={instagramIcon} alt="Instagram" className="w-5 h-5" />
-            </a>
+          {/* Social Icons Mapped */}
+          <div className="mb-8 flex items-center gap-2">
+            {SOCIAL_LINKS.map((social, idx) => (
+              <a
+                key={idx}
+                href={social.href}
+                aria-label={social.label}
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-[#ECECEC] text-[#7E7E7E] transition-all hover:bg-[#3BB77E] hover:border-[#3BB77E] hover:text-white group"
+              >
+                <img
+                  src={social.icon}
+                  alt={social.label}
+                  className="w-4 h-4 transition-all group-hover:brightness-0 group-hover:invert"
+                />
+              </a>
+            ))}
           </div>
 
-          <div className="grid grid-cols-5 gap-3">
+          <div className="grid grid-cols-5 gap-2">
             {GALLERY_IMGS.map((img, idx) => (
               <div
                 key={idx}
-                className="aspect-square rounded-md overflow-hidden bg-gray-50"
+                className="aspect-square overflow-hidden rounded-md border border-[#ECECEC] bg-white"
               >
                 <img
                   src={img}
-                  alt={`Gallery ${idx + 1}`}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform"
+                  alt=""
+                  className="h-full w-full object-cover transition-transform hover:scale-110"
                 />
               </div>
             ))}
@@ -171,10 +173,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="shell-header border-t border-[#E9E9E9]">
-        <div className="shell-header py-5 text-center text-sm text-gray-400">
+      <div className="border-t border-[#E9E9E9] py-7">
+        <div className="shell-header text-center text-[14px] text-[#7E7E7E]">
           © {year}{" "}
-          <Link to="/" className="text-[#E44B26] hover:underline">
+          <Link to="/" className="font-semibold text-[#3BB77E] hover:underline">
             Foodzy
           </Link>
           . All rights reserved.

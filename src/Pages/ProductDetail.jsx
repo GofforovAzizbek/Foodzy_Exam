@@ -14,19 +14,7 @@ import Breadcrumb from "../Components/Ui/Breadcrumb";
 import useCartStore from "../Store/cartStore";
 
 const TABS = ["Description", "Information", "Review"];
-const POPULAR_TABS = [
-  "All",
-  "Fruits",
-  "Vegetables",
-  "Snacks",
-  "Dairy & Milk",
-  "Beverages",
-  "Seafood",
-  "Bakery",
-  "Frozen Foods",
-  "Meat & Poultry",
-  "Organic",
-];
+const POPULAR_TABS = [];
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -42,9 +30,10 @@ export default function ProductDetail() {
     enabled: !!id,
   });
 
+  // Query limitini 4 ga o'zgartirdim
   const { data: related = [] } = useQuery({
-    queryKey: ["products", "popular", 5],
-    queryFn: () => fetchPopularProducts(5),
+    queryKey: ["products", "popular", 4],
+    queryFn: () => fetchPopularProducts(4),
   });
 
   if (isLoading) return <ProductDetailSkeleton />;
@@ -341,11 +330,15 @@ export default function ProductDetail() {
         </div>
 
         <div className="mt-14">
-          <div className="mb-7 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <h2 className="text-[26px] md:text-[34px] font-bold leading-none text-[#253D4E]">
+          <div className="mb-7 flex flex-col gap-4 lg:flex-col lg:items-center lg:justify-between">
+            <h2 className="text-[26px] md:text-[34px] text-center font-bold leading-none text-[#253D4E]">
               Popular Products
             </h2>
-
+            <p className="max-w-[600px] text-center text-gray-500">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et viverra maecenas accumsan
+              lacus vel facilisis.
+            </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {POPULAR_TABS.map((tab, index) => (
                 <button
@@ -362,7 +355,8 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+          {/* Grid kolonnasini xl:grid-cols-4 qildim */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {related.map((p) => (
               <ProductCard key={p.id} product={p} variant="figmaPopularWide" />
             ))}
