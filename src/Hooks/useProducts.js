@@ -35,7 +35,6 @@ export function usePopularProducts(limit = 10) {
   });
 }
 
-// Daily Best Sells
 export function useDailyBestSells(limit = 4) {
   return useQuery({
     queryKey: [...QUERY_KEYS.products.dailyBestSells, limit],
@@ -43,7 +42,6 @@ export function useDailyBestSells(limit = 4) {
   });
 }
 
-// Deals of the Day
 export function useDeals(limit = 4) {
   return useQuery({
     queryKey: [...QUERY_KEYS.products.deals, limit],

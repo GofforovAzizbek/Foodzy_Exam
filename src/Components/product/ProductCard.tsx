@@ -1,5 +1,3 @@
-// =====================================================
-// =====================================================
 import { Link } from 'react-router-dom'
 import { useCartStore } from '@/store/cartStore'
 import { useUiStore } from '@/store/uiStore'

@@ -22,6 +22,7 @@ const NAV_LINKS = [
   { label: "Pages", to: "/shop", dropdown: true },
   { label: "Blog", to: "/blog", dropdown: true },
   { label: "Elements", to: "/Products", dropdown: true },
+  { label: "FAQ", to: "/FAQ" },
 ];
 
 export default function Header() {
@@ -43,9 +44,8 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      {/* ================= TOP ROW ================= */}
       <div className="border-b border-gray-100 relative z-40 py-[10px]">
-        <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
+        <div className="shell-header flex items-center justify-between">
           <button className="hidden lg:block">
             <img src={menu} alt="" className="" />
           </button>
@@ -56,7 +56,6 @@ export default function Header() {
             <Menu size={20} />
           </button>
 
-          {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <Link
@@ -83,8 +82,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ================= DESKTOP ROW ================= */}
-      <div className="hidden lg:flex max-w-[1200px] mx-auto px-4 py-[15px] items-center gap-4 relative z-40">
+      <div className="shell-header hidden lg:flex py-[15px] items-center gap-4 relative z-40">
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
           <img src={logo} alt="Foodzy" />
         </Link>
@@ -132,13 +130,11 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ================= MOBILE OVERLAY ================= */}
       <div
         className={`fixed inset-0 z-[9999] lg:hidden transition-all duration-300 ${
           mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
-        {/* overlay */}
         <div
           className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
             mobileMenuOpen ? "opacity-100" : "opacity-0"
@@ -146,13 +142,11 @@ export default function Header() {
           onClick={() => setMobileMenuOpen(false)}
         />
 
-        {/* sidebar */}
         <div
           className={`absolute top-0 left-0 h-full w-72 bg-white shadow-2xl rounded-r-2xl z-[10000]
           transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
           ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
-          {/* header */}
           <div className="flex items-center justify-between p-4 border-b">
             <Link to="/">
               <img src={logo} alt="Foodzy" className="h-7" />
@@ -163,9 +157,7 @@ export default function Header() {
             </button>
           </div>
 
-          {/* content */}
           <div className="p-4 flex flex-col gap-5 overflow-y-auto h-full">
-            {/* 🔥 MOBILE SEARCH + CATEGORY (FIXED) */}
             <form onSubmit={handleSearch} className="flex flex-col gap-2">
               <input
                 value={searchQuery}
@@ -188,7 +180,6 @@ export default function Header() {
               </div>
             </form>
 
-            {/* icons */}
             <div className="flex flex-col gap-3 pt-[25px]">
               <button className="flex items-center gap-2">
                 <User size={18} /> Account
@@ -204,7 +195,6 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* nav */}
             <nav className="flex flex-col border-t pt-3">
               {NAV_LINKS.map((link) => (
                 <Link

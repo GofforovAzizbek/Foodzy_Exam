@@ -36,7 +36,7 @@ const GALLERY_IMGS = [footerImg1, footerImg2, footerImg3, footerImg4, footerImg5
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100 mt-16">
-      <div className="max-w-[1200px] mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="shell-header py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
         <div>
           <Link to="/" className="flex items-center gap-2 mb-4">
@@ -145,7 +145,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4 py-4 text-center text-sm text-gray-400">
+        <div className="shell-header py-4 text-center text-sm text-gray-400">
           © 2025{' '}
           <Link to="/" className="text-[#E44B26] hover:underline">
             Foodzy

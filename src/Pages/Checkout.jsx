@@ -63,7 +63,6 @@ export default function Checkout() {
       <div className="max-w-[1200px] mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-7">
           <div className="lg:w-72 flex-shrink-0 space-y-5">
-            {/* Summary */}
             <div className="bg-white rounded-xl shadow-sm p-5">
               <h3 className="font-bold text-gray-900 mb-4">Summary</h3>
               <div className="space-y-2 text-sm text-gray-600 mb-3">
@@ -108,7 +107,6 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Delivery Method */}
             <div className="bg-white rounded-xl shadow-sm p-5">
               <h3 className="font-bold text-gray-900 mb-3">Delivery Method</h3>
               <p className="text-xs text-gray-400 mb-3">
@@ -150,7 +148,6 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Payment Method */}
             <div className="bg-white rounded-xl shadow-sm p-5">
               <h3 className="font-bold text-gray-900 mb-3">Payment Method</h3>
               <div className="space-y-2 mb-3">
@@ -186,7 +183,6 @@ export default function Checkout() {
           </div>
 
           <div className="flex-1 space-y-5">
-            {/* New Customer */}
             <div className="bg-white rounded-xl shadow-sm p-5">
               <h3 className="font-bold text-gray-900 mb-1">New Customer</h3>
               <p className="text-xs text-gray-400 mb-3">Checkout Options</p>
@@ -224,7 +220,6 @@ export default function Checkout() {
               </button>
             </div>
 
-            {/* Returning Customer */}
             <div className="bg-white rounded-xl shadow-sm p-5">
               <h3 className="font-bold text-gray-900 mb-4">
                 Returning Customer
@@ -270,7 +265,6 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Billing Details */}
             <div className="bg-white rounded-xl shadow-sm p-5">
               <h3 className="font-bold text-gray-900 mb-4">Billing Details</h3>
 
@@ -376,7 +370,6 @@ export default function Checkout() {
                 </div>
               </div>
 
-              {/* Place Order */}
               <div className="mt-6 flex justify-end">
                 <button
                   onClick={handleOrder}

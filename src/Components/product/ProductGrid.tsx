@@ -1,5 +1,3 @@
-// =====================================================
-// =====================================================
 import { ProductCard } from './ProductCard'
 import { ProductCardSkeleton } from '@/components/ui/Spinner'
 import type { Product } from '@/types'

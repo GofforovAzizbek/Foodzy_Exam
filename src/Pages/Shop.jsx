@@ -271,7 +271,6 @@ export default function Shop() {
         </aside>
 
         <div className="flex-1 min-w-0">
-          {/* Toolbar */}
           <div className="bg-white rounded-xl px-4 py-3 flex items-center justify-between mb-5 shadow-sm flex-wrap gap-3">
             <div className="flex items-center gap-3">
               <button
@@ -297,7 +296,6 @@ export default function Shop() {
               </p>
             </div>
 
-            {/* Sort */}
             <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
               Sort By:
               <select

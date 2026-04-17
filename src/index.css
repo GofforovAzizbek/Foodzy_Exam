@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .shell-header {
+    @apply mx-auto w-full max-w-[1296px] px-4;
+  }
+}

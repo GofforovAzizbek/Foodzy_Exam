@@ -193,7 +193,7 @@ export default function Cart() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {popular.map((p) => (
-              <ProductCard key={p.id} product={p} />
+              <ProductCard key={p.id} product={p} variant="figmaPopularWide" />
             ))}
           </div>
         </div>

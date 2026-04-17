@@ -90,7 +90,6 @@ export default function BlogDetail() {
             ))}
           </div>
 
-          {/* Bullet points */}
           <ul className="mb-4 space-y-2">
             {POST.bulletPoints.map((point, i) => (
               <li
@@ -186,7 +185,6 @@ export default function BlogDetail() {
             </ul>
           </div>
 
-          {/* Recent Post */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Recent Post</h4>
             <Link to="/blog/1" className="flex gap-3 group">
@@ -207,7 +205,6 @@ export default function BlogDetail() {
             </Link>
           </div>
 
-          {/* Gallery */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Latest Gallery</h4>
             <div className="grid grid-cols-3 gap-1.5">
@@ -227,7 +224,6 @@ export default function BlogDetail() {
             </div>
           </div>
 
-          {/* Tags */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Popular Tags</h4>
             <div className="flex flex-wrap gap-2">

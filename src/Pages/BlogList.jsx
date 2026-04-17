@@ -141,7 +141,6 @@ export default function BlogList() {
             </ul>
           </div>
 
-          {/* Recent Posts */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Recent Post</h4>
             {RECENT_POSTS.map((post) => (
@@ -168,7 +167,6 @@ export default function BlogList() {
             ))}
           </div>
 
-          {/* Gallery */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Latest Gallery</h4>
             <div className="grid grid-cols-3 gap-1.5">
@@ -188,7 +186,6 @@ export default function BlogList() {
             </div>
           </div>
 
-          {/* Popular Tags */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Popular Tags</h4>
             <div className="flex flex-wrap gap-2">

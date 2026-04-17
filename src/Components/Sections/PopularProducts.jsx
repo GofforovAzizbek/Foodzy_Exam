@@ -18,14 +18,11 @@ export default function PopularProducts() {
 
   return (
     <section className="max-w-[1200px] mx-auto px-4 py-12">
-      {/* HEADER */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
-        {/* TITLE */}
         <h2 className="text-[26px] md:text-[32px] font-bold text-[#253D4E]">
           Popular Products
         </h2>
 
-        {/* TABS */}
         <div className="flex flex-wrap items-center gap-3 md:gap-5">
           {tabs.map((tab) => (
             <button
@@ -46,19 +43,21 @@ export default function PopularProducts() {
         </div>
       </div>
 
-      {/* PRODUCTS GRID */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
         {isLoading
           ? Array.from({ length: 10 }).map((_, i) => <SkeletonCard key={i} />)
           : filtered.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                variant="figmaPopularWide"
+              />
             ))}
       </div>
     </section>
   );
 }
 
-/* SKELETON */
 function SkeletonCard() {
   return (
     <div className="rounded-[12px] border border-[#ECECEC] p-4 animate-pulse bg-white">

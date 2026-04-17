@@ -1,5 +1,3 @@
-// =====================================================
-// =====================================================
 import { useSearchParams } from 'react-router-dom'
 import { useCategories } from '@/hooks/useCategories'
 import { buildSearchParams, parseSearchParams } from '@/utils/searchParams'

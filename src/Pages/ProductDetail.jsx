@@ -14,6 +14,19 @@ import Breadcrumb from "../Components/Ui/Breadcrumb";
 import useCartStore from "../Store/cartStore";
 
 const TABS = ["Description", "Information", "Review"];
+const POPULAR_TABS = [
+  "All",
+  "Fruits",
+  "Vegetables",
+  "Snacks",
+  "Dairy & Milk",
+  "Beverages",
+  "Seafood",
+  "Bakery",
+  "Frozen Foods",
+  "Meat & Poultry",
+  "Organic",
+];
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -30,8 +43,8 @@ export default function ProductDetail() {
   });
 
   const { data: related = [] } = useQuery({
-    queryKey: ["products", "popular", 4],
-    queryFn: () => fetchPopularProducts(4),
+    queryKey: ["products", "popular", 5],
+    queryFn: () => fetchPopularProducts(5),
   });
 
   if (isLoading) return <ProductDetailSkeleton />;
@@ -328,12 +341,34 @@ export default function ProductDetail() {
         </div>
 
         <div className="mt-14">
-          <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
-            Popular Products
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="mb-7 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <h2 className="text-[26px] md:text-[34px] font-bold leading-none text-[#253D4E]">
+              Popular Products
+            </h2>
+
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              {POPULAR_TABS.map((tab, index) => (
+                <button
+                  key={tab}
+                  className={`text-[14px] font-semibold transition-colors ${
+                    index === 0
+                      ? "text-[#3BB77E]"
+                      : "text-[#7E7E7E] hover:text-[#3BB77E]"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {related.map((p) => (
-              <ProductCard key={p.id} product={p} />
+              <ProductCard
+                key={p.id}
+                product={p}
+                variant="figmaPopularWide"
+              />
             ))}
           </div>
         </div>

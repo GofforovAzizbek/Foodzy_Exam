@@ -1,7 +1,6 @@
 function App() {
   return (
     <>
-      alsdaksnjd
       <div className=""></div>
     </>
   );
