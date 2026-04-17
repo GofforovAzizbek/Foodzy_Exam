@@ -22,15 +22,25 @@ const FEATURES = [
 
 export default function FeaturesStrip() {
   return (
-    <section className="border-y border-gray-100 bg-white">
+    <section className="bg-white py-2">
       <div className="max-w-[1200px] mx-auto px-4 py-5">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="flex items-center gap-3 cursor-pointer hover:scale-105 rounded-lg px-3 py-2 transition-colors"
+              className="flex items-center gap-3 rounded-xl bg-[#F4F6FA] px-5 py-4 transition-transform hover:-translate-y-0.5"
             >
-              <img src={f.icon} alt={f.title} className=" flex-shrink-0" />
+              <img
+                src={f.icon}
+                alt={f.title}
+                className="h-11 w-11 flex-shrink-0"
+              />
+              <div>
+                <p className="text-[18px] font-medium leading-tight text-[#253D4E]">
+                  {f.title}
+                </p>
+                <p className="mt-1 text-sm text-[#ADADAD]">{f.subtitle}</p>
+              </div>
             </div>
           ))}
         </div>

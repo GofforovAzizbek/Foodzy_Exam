@@ -17,7 +17,7 @@ export default function PopularProducts() {
       : products.filter((p) => p.categories?.name === activeCategory);
 
   return (
-    <section className="max-w-[1200px] mx-auto px-4 py-12">
+    <section className="max-w-[1400px] mx-auto px-4 py-12">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
         <h2 className="text-[26px] md:text-[32px] font-bold text-[#253D4E]">
           Popular Products

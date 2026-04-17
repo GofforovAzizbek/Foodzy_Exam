@@ -6,7 +6,6 @@ import Badge from "../Ui/Badge";
 import StarRating from "../Ui/StarRating";
 import dailyBestSellsImg from "../../assets/images/DailyBestSells-img.png";
 
-
 const TABS = ["Featured", "Popular", "New added"];
 
 function SliderSkeleton() {

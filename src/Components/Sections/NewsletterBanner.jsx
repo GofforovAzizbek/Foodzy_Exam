@@ -40,7 +40,7 @@ export default function NewsletterBanner() {
           onSubmit={handleSubmit}
           className="flex relative z-10 w-full md:max-w-[473px]"
         >
-          <div className="flex items-center bg-white border border-gray-200 rounded-l-full px-4 gap-2 flex-1 md:w-64">
+          <div className="flex items-center bg-white border border-gray-200 rounded-full pl-4 gap-2 flex-1 md:w-64">
             <svg
               width="16"
               height="16"
@@ -64,14 +64,14 @@ export default function NewsletterBanner() {
               required
               className="flex-1 py-3 text-sm bg-transparent focus:outline-none text-gray-700"
             />
+            <button
+              type="submit"
+              className="bg-[#E44B26] hover:bg-[#c93f1e] text-white px-6 py-3
+                       rounded-full text-sm font-medium transition-colors flex-shrink-0"
+            >
+              Subscribe
+            </button>
           </div>
-          <button
-            type="submit"
-            className="bg-[#E44B26] hover:bg-[#c93f1e] text-white px-6 py-3
-                       rounded-r-full text-sm font-medium transition-colors flex-shrink-0"
-          >
-            Subscribe
-          </button>
         </form>
 
         <img

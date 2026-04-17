@@ -30,10 +30,12 @@ export default function DealsOfTheDay() {
   return (
     <section className="max-w-[1200px] mx-auto px-4 py-10">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Deals Of The Day</h2>
+        <h2 className="text-[32px] font-bold leading-none text-[#253D4E]">
+          Deals Of The Day
+        </h2>
         <Link
           to="/shop?deals=true"
-          className="text-sm text-[#E44B26] hover:underline font-medium flex items-center gap-1"
+          className="flex items-center gap-1 text-sm font-medium text-[#7E7E7E] hover:text-[#253D4E]"
         >
           All Deals →
         </Link>
@@ -61,9 +63,9 @@ function DealCard({ deal, fallbackImage }) {
   return (
     <Link
       to={`/product/${id}`}
-      className="group relative rounded-xl overflow-hidden bg-gray-50 block"
+      className="group relative block overflow-hidden rounded-2xl bg-[#F8F8F8]"
     >
-      <div className="aspect-square overflow-hidden">
+      <div className="h-[336px] overflow-hidden">
         <img
           src={image_url || fallbackImage}
           alt={name}
@@ -73,23 +75,31 @@ function DealCard({ deal, fallbackImage }) {
         />
       </div>
 
-      <div className="bg-white p-3">
+      <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-white p-6 shadow-[0_18px_32px_rgba(15,23,42,0.10)]">
         <p
-          className="text-sm font-medium text-gray-800 line-clamp-2 mb-1
-                      group-hover:text-[#E44B26] transition-colors"
+          className="mb-2 line-clamp-2 text-[18px] font-semibold leading-[1.25] text-[#253D4E]
+                      transition-colors group-hover:text-[#E44B26]"
         >
           {name}
         </p>
 
-        {brand && <p className="text-xs text-gray-400 mb-1">By {brand}</p>}
+        <div className="mb-1">
+          <StarRating rating={rating} count={review_count} />
+        </div>
 
-        <StarRating rating={rating} count={review_count} />
+        {brand && (
+          <p className="mb-4 text-sm text-[#B6B6B6]">
+            By <span className="text-[#3BB77E]">{brand}</span>
+          </p>
+        )}
 
-        <div className="flex items-center justify-between mt-2">
+        <div className="mt-2 flex items-center justify-between gap-3">
           <div>
-            <span className="text-[#E44B26] font-bold text-sm">${price}</span>
+            <span className="text-[28px] font-bold leading-none text-[#3BB77E]">
+              ${price}
+            </span>
             {old_price && (
-              <span className="text-gray-400 text-xs line-through ml-1">
+              <span className="ml-2 text-sm text-[#ADADAD] line-through">
                 ${old_price}
               </span>
             )}
@@ -100,11 +110,11 @@ function DealCard({ deal, fallbackImage }) {
               e.preventDefault();
               e.stopPropagation();
             }}
-            className="flex items-center gap-1 bg-[#E44B26] hover:bg-[#c93f1e]
-                       text-white text-xs px-3 py-1.5 rounded transition-colors"
+            className="flex h-9 items-center gap-1.5 rounded-[4px] bg-[#F53E32] px-4
+                       text-sm font-semibold text-white transition-colors hover:bg-[#dc3429]"
             aria-label={`Add ${name} to cart`}
           >
-            <ShoppingCart size={12} />
+            <ShoppingCart size={14} />
             Add
           </button>
         </div>

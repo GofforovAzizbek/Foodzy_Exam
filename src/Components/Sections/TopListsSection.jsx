@@ -35,30 +35,31 @@ function ProductRow({ product }) {
   return (
     <Link
       to={`/product/${id}`}
-      className="flex items-center gap-3 py-3 border-b border-gray-50 last:border-0 group"
+      className="group flex items-center gap-4 py-3"
     >
-      <div className="w-14 h-14 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+      <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-[#F7F8FA]">
         <img
           src={image_url}
           alt={name}
-          className="w-full h-full object-contain
-                     group-hover:scale-105 transition-transform"
+          className="h-full w-full object-contain transition-transform group-hover:scale-105"
           loading="lazy"
         />
       </div>
 
       <div className="flex-1 min-w-0">
         <p
-          className="text-sm font-medium text-gray-800 line-clamp-2
-                      group-hover:text-[#E44B26] transition-colors leading-snug"
+          className="line-clamp-2 text-[15px] font-medium leading-[1.25] text-[#253D4E]
+                      transition-colors group-hover:text-[#E44B26]"
         >
           {name}
         </p>
-        <StarRating rating={rating} />
-        <div className="flex items-center gap-1.5 mt-0.5">
-          <span className="text-[#E44B26] font-semibold text-sm">${price}</span>
+        <div className="mt-1">
+          <StarRating rating={rating} count={4.0} />
+        </div>
+        <div className="mt-1.5 flex items-center gap-1.5">
+          <span className="text-[#3BB77E] font-bold text-[22px] leading-none">${price}</span>
           {old_price && (
-            <span className="text-gray-400 text-xs line-through">
+            <span className="text-[#ADADAD] text-sm line-through">
               ${old_price}
             </span>
           )}
@@ -71,8 +72,11 @@ function ProductRow({ product }) {
 function Column({ label, products = [], isLoading }) {
   return (
     <div>
-      <h3 className="font-bold text-gray-900 mb-3 text-base">{label}</h3>
-      <div>
+      <div className="mb-5 border-b border-[#ECECEC] pb-4">
+        <h3 className="text-[32px] font-bold leading-none text-[#253D4E]">{label}</h3>
+        <div className="mt-4 h-[3px] w-16 rounded-full bg-[#3BB77E]" />
+      </div>
+      <div className="space-y-2">
         {isLoading
           ? Array.from({ length: 3 }).map((_, i) => <RowSkeleton key={i} />)
           : products.map((p) => <ProductRow key={p.id} product={p} />)}
@@ -106,7 +110,7 @@ export default function TopListsSection() {
 
   return (
     <section className="max-w-[1200px] mx-auto px-4 py-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {columnsData.map((col) => (
           <Column
             key={col.key}

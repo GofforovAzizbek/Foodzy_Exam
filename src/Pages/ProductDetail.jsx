@@ -364,11 +364,7 @@ export default function ProductDetail() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {related.map((p) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                variant="figmaPopularWide"
-              />
+              <ProductCard key={p.id} product={p} variant="figmaPopularWide" />
             ))}
           </div>
         </div>

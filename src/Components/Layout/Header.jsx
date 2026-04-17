@@ -43,10 +43,10 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="border-b border-gray-100 relative z-40 py-[10px]">
+    <header className="sticky top-0 z-50 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+      <div className="relative z-40 border-b border-gray-100 py-[10px]">
         <div className="shell-header flex items-center justify-between">
-          <button className="hidden lg:block">
+          <button className="hidden lg:flex">
             <img src={menu} alt="" className="" />
           </button>
           <button
@@ -56,18 +56,16 @@ export default function Header() {
             <Menu size={20} />
           </button>
 
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-9">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="flex items-center text-sm text-gray-600 hover:text-[#E44B26]"
+                className="flex items-center text-[13px] font-medium text-[#253D4E] hover:text-[#E44B26]"
               >
                 {link.label}
 
-                {link.label !== "Home" && (
-                  <ChevronDown size={14} className="ml-1" />
-                )}
+                {link.dropdown && <ChevronDown size={14} className="ml-1" />}
               </Link>
             ))}
           </nav>
@@ -82,42 +80,45 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="shell-header hidden lg:flex py-[15px] items-center gap-4 relative z-40">
+      <div className="shell-header relative z-40 hidden items-center gap-6 py-[18px] lg:flex">
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <img src={logo} alt="Foodzy" />
+          <img src={logo} alt="Foodzy" className="h-[52px] w-auto" />
         </Link>
 
-        <form onSubmit={handleSearch} className="flex-1 max-w-xl flex">
+        <form
+          onSubmit={handleSearch}
+          className="mx-[10%] flex max-w-[600px] flex-1 overflow-hidden rounded-[6px] border border-[#3BB77E]"
+        >
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for items..."
-            className="flex-1 border px-4 py-2 rounded-l-md text-sm"
+            className="min-w-0 flex-1 px-4 py-3 text-sm text-[#253D4E] outline-none"
           />
 
-          <select className="border-y px-3 text-sm bg-white">
+          <select className="border-l border-[#3BB77E] bg-white px-4 text-sm text-[#253D4E] mr-[10px]">
             <option>All Categories</option>
           </select>
 
-          <button className="bg-[#E44B26] text-white px-4 rounded-r-md">
+          <button className="bg-[#F53E32] px-4 text-white">
             <Search size={16} />
           </button>
         </form>
 
-        <div className="flex items-center gap-4 ml-auto">
-          <button className="flex items-center gap-1.5 text-sm">
+        <div className="ml-auto flex items-center gap-7">
+          <button className="flex items-center gap-2 text-[15px] text-[#253D4E]">
             <User size={18} />
             Account
           </button>
 
-          <button className="flex items-center gap-1.5 text-sm">
+          <button className="flex items-center gap-2 text-[15px] text-[#253D4E]">
             <Heart size={18} />
             Wishlist
           </button>
 
           <Link
             to="/cart"
-            className="flex items-center gap-1.5 text-sm relative"
+            className="relative flex items-center gap-2 text-[15px] text-[#253D4E]"
           >
             <ShoppingCart size={18} />
             {totalItems > 0 && (

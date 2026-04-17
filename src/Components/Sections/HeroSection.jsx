@@ -31,7 +31,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
+      <div className="max-w-[1310px] w-full mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-baseline lg:justify-between gap-8 py-10">
           <div className="max-w-full lg:max-w-[550px] order-2 lg:order-1">
             <div className="mb-6 md:mb-8">
