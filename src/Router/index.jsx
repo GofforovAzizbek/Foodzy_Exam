@@ -2,10 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Layout from "../Components/Layout/Layout.jsx";
 
-/**
- * Все страницы грузятся лениво (lazy) — меньше начальный бандл.
- * Suspense показывает минимальный спиннер пока страница загружается.
- */
 const Home = lazy(() => import("../Pages/Home.jsx"));
 const Shop = lazy(() => import("../Pages/Shop.jsx"));
 const ProductDetail = lazy(() => import("../Pages/ProductDetail.jsx"));
@@ -16,7 +12,6 @@ const BlogDetail = lazy(() => import("../Pages/BlogDetail.jsx"));
 const FAQ = lazy(() => import("../Pages/FAQ.jsx"));
 const NotFound = lazy(() => import("../Pages/NotFound.jsx"));
 
-// Простой fallback на время загрузки страницы
 function PageLoader() {
   return (
     <div className="flex items-center justify-center min-h-[50vh]">

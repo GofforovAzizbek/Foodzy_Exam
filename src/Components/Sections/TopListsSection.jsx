@@ -7,10 +7,6 @@ import {
   useTopRated,
 } from "../../Hooks/useProducts";
 
-/**
- * Секция "Top Selling / Trending / Recently Added / Top Rated".
- * Четыре колонки, в каждой 3 компактных карточки.
- */
 
 const COLUMNS = [
   { key: "topSelling", label: "Top Selling" },
@@ -19,7 +15,6 @@ const COLUMNS = [
   { key: "topRated", label: "Top Rated" },
 ];
 
-// Скелетон одной строки
 function RowSkeleton() {
   return (
     <div className="flex items-center gap-3 py-3 animate-pulse">
@@ -33,7 +28,6 @@ function RowSkeleton() {
   );
 }
 
-/** Одна компактная строка товара */
 function ProductRow({ product }) {
   if (!product) return null;
   const { id, name, price, old_price, image_url, rating } = product;
@@ -43,7 +37,6 @@ function ProductRow({ product }) {
       to={`/product/${id}`}
       className="flex items-center gap-3 py-3 border-b border-gray-50 last:border-0 group"
     >
-      {/* Превью */}
       <div className="w-14 h-14 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
         <img
           src={image_url}
@@ -54,7 +47,6 @@ function ProductRow({ product }) {
         />
       </div>
 
-      {/* Инфо */}
       <div className="flex-1 min-w-0">
         <p
           className="text-sm font-medium text-gray-800 line-clamp-2
@@ -76,7 +68,6 @@ function ProductRow({ product }) {
   );
 }
 
-/** Одна колонка: заголовок + 3 товара */
 function Column({ label, products = [], isLoading }) {
   return (
     <div>

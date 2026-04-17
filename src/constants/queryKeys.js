@@ -1,5 +1,3 @@
-// Централизованные ключи для React Query кэша
-// Используются во всех хуках и инвалидациях
 
 export const QUERY_KEYS = {
   products: {

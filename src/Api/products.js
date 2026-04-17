@@ -1,21 +1,10 @@
 import axiosClient from "./axiosClient";
 import { buildSupabaseUrl } from "../Utils/buildSupabaseQuery";
 
-/**
- * Реальная схема таблицы products:
- * id, name, slug, description, price, old_price, image_url,
- * category_id, brand, weight, stock, rating, review_count,
- * is_featured, is_new, is_sale, diet_type, speciality, flavour, created_at
- *
- * Реальная схема таблицы categories:
- * id, name, slug, created_at
- */
 
-// Поля для карточки товара (join с categories через select)
 const CARD_FIELDS =
   "id,name,slug,price,old_price,image_url,brand,weight,stock,rating,review_count,is_featured,is_new,is_sale,categories(name,slug)";
 
-// Список товаров с фильтрами и пагинацией
 export async function fetchProducts({
   categoryId,
   order = "id.asc",
@@ -44,7 +33,6 @@ export async function fetchProducts({
   return { data: response.data, total };
 }
 
-// Один товар по id — все поля
 export async function fetchProductById(id) {
   const url = buildSupabaseUrl("products", {
     select: "*,categories(name,slug)",
@@ -55,7 +43,6 @@ export async function fetchProductById(id) {
   return response.data[0] ?? null;
 }
 
-// Популярные товары — is_featured = true
 export async function fetchPopularProducts(limit = 10) {
   const url = buildSupabaseUrl("products", {
     select: CARD_FIELDS,
@@ -67,7 +54,6 @@ export async function fetchPopularProducts(limit = 10) {
   return response.data;
 }
 
-// Daily Best Sells — is_sale товары отсортированные по рейтингу
 export async function fetchDailyBestSells(limit = 8) {
   const url = buildSupabaseUrl("products", {
     select: CARD_FIELDS,
@@ -79,7 +65,6 @@ export async function fetchDailyBestSells(limit = 8) {
   return response.data;
 }
 
-// Deals of the Day — товары с old_price (есть скидка)
 export async function fetchDeals(limit = 4) {
   const url = buildSupabaseUrl("products", {
     select: CARD_FIELDS,
@@ -91,7 +76,6 @@ export async function fetchDeals(limit = 4) {
   return response.data;
 }
 
-// Top Selling — featured по убыванию review_count
 export async function fetchTopSelling(limit = 3) {
   const url = buildSupabaseUrl("products", {
     select: CARD_FIELDS,
@@ -103,7 +87,6 @@ export async function fetchTopSelling(limit = 3) {
   return response.data;
 }
 
-// Trending — is_new товары
 export async function fetchTrending(limit = 3) {
   const url = buildSupabaseUrl("products", {
     select: CARD_FIELDS,
@@ -115,7 +98,6 @@ export async function fetchTrending(limit = 3) {
   return response.data;
 }
 
-// Recently Added — по дате создания
 export async function fetchRecentlyAdded(limit = 3) {
   const url = buildSupabaseUrl("products", {
     select: CARD_FIELDS,
@@ -126,7 +108,6 @@ export async function fetchRecentlyAdded(limit = 3) {
   return response.data;
 }
 
-// Top Rated — по рейтингу
 export async function fetchTopRated(limit = 3) {
   const url = buildSupabaseUrl("products", {
     select: CARD_FIELDS,

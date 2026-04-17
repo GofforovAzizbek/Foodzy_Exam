@@ -49,7 +49,6 @@ export default function FAQ() {
 
   return (
     <div>
-      {/* Заголовок */}
       <div className="bg-[#E44B26] py-5">
         <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
           <h1 className="text-white font-bold text-xl">FAQ</h1>
@@ -59,7 +58,6 @@ export default function FAQ() {
 
       <div className="max-w-[1200px] mx-auto px-4 py-12">
         <div className="flex flex-col lg:flex-row gap-10 items-start">
-          {/* Картинка */}
           <div className="lg:w-96 flex-shrink-0">
             <img
               src={faqImage}
@@ -68,7 +66,6 @@ export default function FAQ() {
             />
           </div>
 
-          {/* Аккордеон */}
           <div className="flex-1 space-y-3">
             {FAQ_ITEMS.map((item) => (
               <div

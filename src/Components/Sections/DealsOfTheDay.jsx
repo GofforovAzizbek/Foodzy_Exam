@@ -3,7 +3,6 @@ import { ShoppingCart } from "lucide-react";
 import { useDeals } from "../../Hooks/useProducts";
 import StarRating from "../Ui/StarRating";
 
-// Статичные изображения для deals (если в БД нет image_url — используем дефолт)
 import deal1 from "../../assets/images/DealsOfTheDay1.png";
 import deal2 from "../../assets/images/DealsOfTheDay2.png";
 import deal3 from "../../assets/images/DealsOfTheDay3.png";
@@ -11,10 +10,6 @@ import deal4 from "../../assets/images/DealsOfTheDay4.png";
 
 const FALLBACK_IMAGES = [deal1, deal2, deal3, deal4];
 
-/**
- * Секция "Deals of the Day".
- * Четыре карточки с большими изображениями и оверлеем с информацией.
- */
 
 function SkeletonDeal() {
   return (
@@ -34,7 +29,6 @@ export default function DealsOfTheDay() {
 
   return (
     <section className="max-w-[1200px] mx-auto px-4 py-10">
-      {/* Заголовок */}
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Deals Of The Day</h2>
         <Link
@@ -45,7 +39,6 @@ export default function DealsOfTheDay() {
         </Link>
       </div>
 
-      {/* Сетка */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => <SkeletonDeal key={i} />)
@@ -53,7 +46,6 @@ export default function DealsOfTheDay() {
               <DealCard
                 key={deal.id}
                 deal={deal}
-                // Используем fallback если нет image_url
                 fallbackImage={FALLBACK_IMAGES[idx % FALLBACK_IMAGES.length]}
               />
             ))}
@@ -71,7 +63,6 @@ function DealCard({ deal, fallbackImage }) {
       to={`/product/${id}`}
       className="group relative rounded-xl overflow-hidden bg-gray-50 block"
     >
-      {/* Изображение */}
       <div className="aspect-square overflow-hidden">
         <img
           src={image_url || fallbackImage}
@@ -82,9 +73,7 @@ function DealCard({ deal, fallbackImage }) {
         />
       </div>
 
-      {/* Информация поверх — появляется снизу */}
       <div className="bg-white p-3">
-        {/* Название */}
         <p
           className="text-sm font-medium text-gray-800 line-clamp-2 mb-1
                       group-hover:text-[#E44B26] transition-colors"
@@ -92,13 +81,10 @@ function DealCard({ deal, fallbackImage }) {
           {name}
         </p>
 
-        {/* Бренд */}
         {brand && <p className="text-xs text-gray-400 mb-1">By {brand}</p>}
 
-        {/* Рейтинг */}
         <StarRating rating={rating} count={review_count} />
 
-        {/* Цена + кнопка */}
         <div className="flex items-center justify-between mt-2">
           <div>
             <span className="text-[#E44B26] font-bold text-sm">${price}</span>

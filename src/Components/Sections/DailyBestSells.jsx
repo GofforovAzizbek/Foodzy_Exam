@@ -6,16 +6,9 @@ import Badge from "../Ui/Badge";
 import StarRating from "../Ui/StarRating";
 import dailyBestSellsImg from "../../assets/images/DailyBestSells-img.png";
 
-/**
- * Секция "Daily Best Sells".
- * Слева: промо-баннер с картинкой.
- * Справа: слайдер карточек товаров (прокрутка по 1).
- * Табы: Featured / Popular / New added.
- */
 
 const TABS = ["Featured", "Popular", "New added"];
 
-// Скелетон для карточки товара в слайдере
 function SliderSkeleton() {
   return (
     <div className="flex-shrink-0 w-52 border border-gray-100 rounded-lg p-3 animate-pulse">
@@ -30,12 +23,10 @@ function SliderSkeleton() {
 
 export default function DailyBestSells() {
   const [activeTab, setActiveTab] = useState("Featured");
-  // Смещение слайдера — индекс первого видимого элемента
   const [sliderIndex, setSliderIndex] = useState(0);
 
   const { data: products = [], isLoading } = useDailyBestSells(8);
 
-  // Количество видимых карточек за раз
   const VISIBLE = 4;
 
   function slidePrev() {
@@ -51,7 +42,6 @@ export default function DailyBestSells() {
 
   return (
     <section className="max-w-[1200px] mx-auto px-4 py-10">
-      {/* Заголовок + табы */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Daily Best Sells</h2>
 
@@ -79,7 +69,6 @@ export default function DailyBestSells() {
       </div>
 
       <div className="flex gap-5">
-        {/* ── Промо-баннер слева ── */}
         <div
           className="hidden lg:flex flex-col justify-between rounded-xl overflow-hidden
                      bg-gray-900 text-white p-6 min-w-[220px] max-w-[220px] relative"
@@ -107,9 +96,7 @@ export default function DailyBestSells() {
           />
         </div>
 
-        {/* ── Слайдер карточек ── */}
         <div className="flex-1 relative overflow-hidden">
-          {/* Кнопки навигации */}
           {canPrev && (
             <button
               onClick={slidePrev}
@@ -135,7 +122,6 @@ export default function DailyBestSells() {
             </button>
           )}
 
-          {/* Карточки — сдвигаем через translateX */}
           <div
             className="flex gap-4 transition-transform duration-300"
             style={{
@@ -156,7 +142,6 @@ export default function DailyBestSells() {
   );
 }
 
-/** Карточка товара в слайдере Daily Best Sells */
 function DailyProductCard({ product }) {
   const { id, name, price, old_price, image_url, badge, rating, sold_count } =
     product;
@@ -167,14 +152,12 @@ function DailyProductCard({ product }) {
       className="flex-shrink-0 w-52 border border-gray-100 rounded-lg p-3
                  hover:shadow-md transition-shadow group flex flex-col"
     >
-      {/* Бейдж */}
       {badge && (
         <div className="mb-2">
           <Badge label={badge} />
         </div>
       )}
 
-      {/* Изображение */}
       <div className="h-32 flex items-center justify-center bg-gray-50 rounded-lg mb-3 overflow-hidden">
         <img
           src={image_url}
@@ -185,7 +168,6 @@ function DailyProductCard({ product }) {
         />
       </div>
 
-      {/* Название */}
       <p
         className="text-sm font-medium text-gray-800 line-clamp-2 mb-1
                     group-hover:text-[#E44B26] transition-colors flex-1"
@@ -193,10 +175,8 @@ function DailyProductCard({ product }) {
         {name}
       </p>
 
-      {/* Рейтинг */}
       <StarRating rating={rating} />
 
-      {/* Цена */}
       <div className="flex items-center gap-2 my-2">
         <span className="text-[#E44B26] font-bold">${price}</span>
         {old_price && (
@@ -206,7 +186,6 @@ function DailyProductCard({ product }) {
         )}
       </div>
 
-      {/* Прогресс продаж */}
       {sold_count !== undefined && (
         <div className="mb-2">
           <div className="text-xs text-gray-400 mb-1">
@@ -221,7 +200,6 @@ function DailyProductCard({ product }) {
         </div>
       )}
 
-      {/* Кнопка в корзину */}
       <button
         onClick={(e) => {
           e.preventDefault();

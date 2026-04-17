@@ -45,14 +45,12 @@ export default function Checkout() {
   }
 
   function handleOrder() {
-    // TODO: отправить заказ в Supabase
     clearCart();
     navigate("/");
   }
 
   return (
     <div>
-      {/* Заголовок */}
       <div className="bg-[#E44B26] py-5">
         <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
           <h1 className="text-white font-bold text-xl">Checkout</h1>
@@ -64,7 +62,6 @@ export default function Checkout() {
 
       <div className="max-w-[1200px] mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-7">
-          {/* ── Левая колонка: Summary + Delivery + Payment ── */}
           <div className="lg:w-72 flex-shrink-0 space-y-5">
             {/* Summary */}
             <div className="bg-white rounded-xl shadow-sm p-5">
@@ -90,7 +87,6 @@ export default function Checkout() {
                 </div>
               </div>
 
-              {/* Товары */}
               <div className="space-y-2 max-h-48 overflow-y-auto">
                 {items.map((item) => (
                   <div key={item.id} className="flex items-center gap-2">
@@ -140,7 +136,6 @@ export default function Checkout() {
                 ))}
               </div>
 
-              {/* Комментарий */}
               <div className="mt-3">
                 <p className="text-xs text-gray-500 mb-1">
                   Add Comments About Your Order
@@ -176,7 +171,6 @@ export default function Checkout() {
                   </label>
                 ))}
               </div>
-              {/* Иконки карт */}
               <div className="flex gap-1 flex-wrap mt-2">
                 {["VISA", "MC", "PayPal", "Skrill", "MU"].map((card) => (
                   <span
@@ -191,7 +185,6 @@ export default function Checkout() {
             </div>
           </div>
 
-          {/* ── Правая колонка: форма ── */}
           <div className="flex-1 space-y-5">
             {/* New Customer */}
             <div className="bg-white rounded-xl shadow-sm p-5">

@@ -38,7 +38,6 @@ function SkeletonCard() {
   );
 }
 
-// List-вид карточки
 function ProductListCard({ product }) {
   const addItem = useCartStore((s) => s.addItem);
   const {
@@ -164,7 +163,6 @@ export default function Shop() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Заголовок */}
       <div className="bg-[#E44B26] py-5">
         <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
           <h1 className="text-white font-bold text-xl">Shop</h1>
@@ -173,11 +171,9 @@ export default function Shop() {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 py-8 flex gap-7">
-        {/* ── Сайдбар ── */}
         <aside
           className={`w-60 flex-shrink-0 ${sidebarOpen ? "block" : "hidden"} lg:block`}
         >
-          {/* Категории */}
           <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
             <h3 className="font-bold text-gray-900 mb-3 text-sm">
               Product Category
@@ -222,7 +218,6 @@ export default function Shop() {
             </ul>
           </div>
 
-          {/* Цена */}
           <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
             <h3 className="font-bold text-gray-900 mb-3 text-sm">
               Filter By Price
@@ -250,7 +245,6 @@ export default function Shop() {
             </button>
           </div>
 
-          {/* Теги */}
           <div className="bg-white rounded-xl p-4 shadow-sm">
             <h3 className="font-bold text-gray-900 mb-3 text-sm">
               Products Tags
@@ -276,7 +270,6 @@ export default function Shop() {
           </div>
         </aside>
 
-        {/* ── Контент ── */}
         <div className="flex-1 min-w-0">
           {/* Toolbar */}
           <div className="bg-white rounded-xl px-4 py-3 flex items-center justify-between mb-5 shadow-sm flex-wrap gap-3">
@@ -322,7 +315,6 @@ export default function Shop() {
             </label>
           </div>
 
-          {/* Товары */}
           {gridView ? (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
               {isLoading

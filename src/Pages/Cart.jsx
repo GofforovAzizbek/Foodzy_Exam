@@ -21,7 +21,6 @@ export default function Cart() {
 
   return (
     <div>
-      {/* Заголовок */}
       <div className="bg-[#E44B26] py-5">
         <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
           <h1 className="text-white font-bold text-xl">Cart</h1>
@@ -31,7 +30,6 @@ export default function Cart() {
 
       <div className="max-w-[1200px] mx-auto px-4 py-8">
         {items.length === 0 ? (
-          /* Пустая корзина */
           <div className="text-center py-24">
             <ShoppingBag size={56} className="mx-auto text-gray-200 mb-4" />
             <p className="text-gray-400 text-lg mb-6">Your cart is empty.</p>
@@ -45,7 +43,6 @@ export default function Cart() {
           </div>
         ) : (
           <>
-            {/* Таблица */}
             <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
               <table className="w-full text-sm">
                 <thead className="bg-gray-50 border-b border-gray-100">
@@ -71,7 +68,6 @@ export default function Cart() {
                       key={item.id}
                       className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors"
                     >
-                      {/* Товар */}
                       <td className="px-4 py-4">
                         <Link
                           to={`/product/${item.id}`}
@@ -93,12 +89,10 @@ export default function Cart() {
                         </Link>
                       </td>
 
-                      {/* Цена */}
                       <td className="px-4 py-4 text-center text-gray-600">
                         ${item.price}
                       </td>
 
-                      {/* Количество */}
                       <td className="px-4 py-4">
                         <div className="flex items-center justify-center">
                           <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
@@ -127,12 +121,10 @@ export default function Cart() {
                         </div>
                       </td>
 
-                      {/* Итого */}
                       <td className="px-4 py-4 text-center font-semibold text-gray-800">
                         ${(item.price * item.quantity).toFixed(2)}
                       </td>
 
-                      {/* Удалить */}
                       <td className="px-4 py-4 text-center">
                         <button
                           onClick={() => removeItem(item.id)}
@@ -148,7 +140,6 @@ export default function Cart() {
               </table>
             </div>
 
-            {/* Footer таблицы */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
               <div className="flex gap-3">
                 <Link
@@ -167,7 +158,6 @@ export default function Cart() {
                 </button>
               </div>
 
-              {/* Итог */}
               <div className="bg-white rounded-xl shadow-sm p-5 w-full sm:w-72">
                 <h3 className="font-bold text-gray-900 mb-3">Order Summary</h3>
                 <div className="flex justify-between text-sm text-gray-600 mb-2">
@@ -197,7 +187,6 @@ export default function Cart() {
           </>
         )}
 
-        {/* Популярные товары */}
         <div className="mt-6">
           <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
             Popular Products

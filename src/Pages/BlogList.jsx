@@ -4,7 +4,6 @@ import { useBlogs } from "../Hooks/useBlogs";
 import Breadcrumb from "../Components/Ui/Breadcrumb";
 import Pagination from "../Components/Ui/Pagination";
 
-// Статичные данные блога (пока нет таблицы blogs в Supabase)
 const BLOG_POSTS = [
   {
     id: 1,
@@ -84,7 +83,6 @@ const GALLERY_IMGS = [
 export default function BlogList() {
   return (
     <div>
-      {/* Заголовок */}
       <div className="bg-[#E44B26] py-5">
         <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
           <h1 className="text-white font-bold text-xl">Blog</h1>
@@ -93,7 +91,6 @@ export default function BlogList() {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
-        {/* ── Статьи ── */}
         <div className="flex-1 min-w-0 space-y-8">
           {BLOG_POSTS.map((post) => (
             <BlogPostCard key={post.id} post={post} />
@@ -101,9 +98,7 @@ export default function BlogList() {
           <Pagination currentPage={1} totalPages={3} onPageChange={() => {}} />
         </div>
 
-        {/* ── Сайдбар ── */}
         <aside className="lg:w-64 flex-shrink-0 space-y-6">
-          {/* Поиск */}
           <div className="flex">
             <input
               type="text"
@@ -129,7 +124,6 @@ export default function BlogList() {
             </button>
           </div>
 
-          {/* Категории */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Category</h4>
             <ul className="space-y-2">
@@ -248,7 +242,6 @@ function BlogPostCard({ post }) {
           {post.excerpt}
         </p>
 
-        {/* Теги + соцсети */}
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div className="flex gap-2 flex-wrap">
             {post.tags.map((tag) => (

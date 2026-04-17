@@ -1,13 +1,6 @@
-/**
- * Пагинация.
- * currentPage: текущая страница (1-based)
- * totalPages: всего страниц
- * onPageChange: (page: number) => void
- */
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
   if (totalPages <= 1) return null
 
-  // Генерируем массив страниц с многоточием
   function getPages() {
     const pages = []
     const delta = 2
@@ -28,7 +21,6 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
 
   return (
     <div className="flex items-center gap-1 justify-center mt-8">
-      {/* Кнопка Previous */}
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -39,7 +31,6 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
         Previous
       </button>
 
-      {/* Номера страниц */}
       {getPages().map((page, idx) =>
         page === '...' ? (
           <span key={`ellipsis-${idx}`} className="px-2 text-gray-400">
@@ -62,7 +53,6 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
         )
       )}
 
-      {/* Кнопка Next */}
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}

@@ -1,8 +1,3 @@
-/**
- * Базовая кнопка с вариантами и размерами.
- * variant: 'primary' | 'outline' | 'ghost'
- * size: 'sm' | 'md' | 'lg'
- */
 const variants = {
   primary: 'bg-[#E44B26] hover:bg-[#c93f1e] text-white',
   outline: 'border border-[#E44B26] text-[#E44B26] hover:bg-[#E44B26] hover:text-white',

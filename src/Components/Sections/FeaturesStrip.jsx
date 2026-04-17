@@ -4,10 +4,6 @@ import features3 from "../../assets/icons/features3.svg";
 import features4 from "../../assets/icons/features4.svg";
 import features5 from "../../assets/icons/features5.svg";
 
-/**
- * Полоска преимуществ (под footer верхним блоком).
- * Best prices / Free delivery / Great daily deal / Wide assortment / Easy returns
- */
 const FEATURES = [
   {
     icon: features1,

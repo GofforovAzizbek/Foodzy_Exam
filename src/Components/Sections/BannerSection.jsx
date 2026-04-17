@@ -3,10 +3,6 @@ import banner1 from "../../assets/images/HomeCategory1.png";
 import banner2 from "../../assets/images/HomeCategory2.png";
 import banner3 from "../../assets/images/HomeCategory3.png";
 
-/**
- * Три рекламных баннера под hero.
- * Каждый ведёт в каталог с нужной категорией.
- */
 const BANNERS = [
   {
     id: 1,
@@ -41,7 +37,6 @@ export default function BannerSection() {
             className="relative rounded-xl overflow-hidden flex items-center justify-between px-6 py-6 min-h-[200px] group"
             style={{ backgroundColor: banner.bg }}
           >
-            {/* Текст + кнопка */}
             <div className="z-10 flex-1 pr-4">
               <p className="font-semibold text-gray-800 text-sm leading-snug mb-3 max-w-[140px]">
                 {banner.title}
@@ -55,7 +50,6 @@ export default function BannerSection() {
               </Link>
             </div>
 
-            {/* Картинка */}
             <div className="flex-shrink-0 w-full flex items-center justify-end absolute right-0 top-1/2 transform -translate-y-1/2">
               <img
                 src={banner.image}

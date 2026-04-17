@@ -6,6 +6,6 @@ export function useCategories() {
   return useQuery({
     queryKey: QUERY_KEYS.categories.all,
     queryFn: fetchCategories,
-    staleTime: 10 * 60 * 1000, // категории меняются редко — кэш 10 минут
+    staleTime: 10 * 60 * 1000,
   });
 }

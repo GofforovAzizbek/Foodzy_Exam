@@ -1,16 +1,12 @@
 // =====================================================
-// PRODUCT FILTERS — сайдбар фильтров для Shop страницы
-// Все параметры хранятся в URL SearchParams
 // =====================================================
 import { useSearchParams } from 'react-router-dom'
 import { useCategories } from '@/hooks/useCategories'
 import { buildSearchParams, parseSearchParams } from '@/utils/searchParams'
 import { useState, useEffect } from 'react'
 
-// Предопределённые теги для фильтрации
 const PRODUCT_TAGS = ['Vegetables', 'Juice', 'Food', 'Dry Fruits']
 
-// Варианты весовых пакетов
 const WEIGHT_OPTIONS = ['2kg Pack', '20kg Pack', '30kg Pack']
 
 export function ProductFilters() {
@@ -18,18 +14,15 @@ export function ProductFilters() {
   const params = parseSearchParams(searchParams)
   const { data: categories = [] } = useCategories()
 
-  // Локальное состояние слайдера цен (применяется при нажатии "Filter")
   const [priceRange, setPriceRange] = useState([
     params.min_price ?? 20,
     params.max_price ?? 250,
   ])
 
-  // Синхронизируем локальный стейт с URL при навигации назад/вперёд
   useEffect(() => {
     setPriceRange([params.min_price ?? 20, params.max_price ?? 250])
   }, [params.min_price, params.max_price])
 
-  // Применить фильтр цены
   function applyPriceFilter() {
     setSearchParams(
       buildSearchParams(searchParams, {
@@ -39,7 +32,6 @@ export function ProductFilters() {
     )
   }
 
-  // Переключить категорию
   function toggleCategory(slug: string) {
     const current = params.category
     setSearchParams(
@@ -65,7 +57,6 @@ export function ProductFilters() {
 
   return (
     <aside style={{ width: '220px', flexShrink: 0 }}>
-      {/* ---------- Категории ---------- */}
       <div style={sectionStyle}>
         <span style={labelStyle}>Product Category</span>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -91,7 +82,6 @@ export function ProductFilters() {
         </div>
       </div>
 
-      {/* ---------- Фильтр по цене ---------- */}
       <div style={sectionStyle}>
         <span style={labelStyle}>Filter By Price</span>
         <input
@@ -111,7 +101,6 @@ export function ProductFilters() {
         </button>
       </div>
 
-      {/* ---------- Цвет ---------- */}
       <div style={sectionStyle}>
         <span style={labelStyle}>Product Category</span>
         {[
@@ -134,7 +123,6 @@ export function ProductFilters() {
         ))}
       </div>
 
-      {/* ---------- Вес ---------- */}
       <div style={sectionStyle}>
         <span style={labelStyle}>Weight</span>
         {WEIGHT_OPTIONS.map((w) => (
@@ -149,7 +137,6 @@ export function ProductFilters() {
         ))}
       </div>
 
-      {/* ---------- Теги ---------- */}
       <div>
         <span style={labelStyle}>Products Tags</span>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>

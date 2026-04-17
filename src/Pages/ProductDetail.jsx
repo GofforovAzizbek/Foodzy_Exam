@@ -69,7 +69,6 @@ export default function ProductDetail() {
     ? Math.round(((old_price - price) / old_price) * 100)
     : null;
 
-  // Несколько фото (у нас одно — дублируем для демонстрации)
   const images = [image_url, image_url, image_url, image_url].filter(Boolean);
 
   function handleAdd() {
@@ -78,7 +77,6 @@ export default function ProductDetail() {
 
   return (
     <div>
-      {/* Заголовок */}
       <div className="bg-[#E44B26] py-5">
         <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
           <h1 className="text-white font-bold text-xl">Product</h1>
@@ -94,9 +92,7 @@ export default function ProductDetail() {
 
       <div className="max-w-[1200px] mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-10">
-          {/* ── Галерея ── */}
           <div className="lg:w-[340px] flex-shrink-0">
-            {/* Главное фото */}
             <div className="bg-gray-50 rounded-xl overflow-hidden flex items-center justify-center h-72 mb-3">
               <img
                 src={images[activeImg]}
@@ -104,7 +100,6 @@ export default function ProductDetail() {
                 className="max-h-full max-w-full object-contain p-4"
               />
             </div>
-            {/* Миниатюры */}
             <div className="flex gap-2">
               {images.map((img, idx) => (
                 <button
@@ -123,11 +118,9 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          {/* ── Информация ── */}
           <div className="flex-1">
             <h1 className="text-xl font-bold text-gray-900 mb-2">{name}</h1>
 
-            {/* Рейтинг */}
             <div className="flex items-center gap-2 mb-3">
               <div className="flex gap-0.5">
                 {[1, 2, 3, 4, 5].map((s) => (
@@ -144,7 +137,6 @@ export default function ProductDetail() {
               </span>
             </div>
 
-            {/* Характеристики */}
             <div className="text-sm space-y-1.5 mb-4 text-gray-600">
               {brand && (
                 <p>
@@ -194,7 +186,6 @@ export default function ProductDetail() {
               </p>
             </div>
 
-            {/* Цена */}
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl font-black text-[#E44B26]">
                 ${price}
@@ -211,7 +202,6 @@ export default function ProductDetail() {
               )}
             </div>
 
-            {/* Бейджи */}
             <div className="flex gap-2 mb-5">
               {is_new && (
                 <span className="bg-[#3BB77E] text-white text-xs font-bold px-2 py-0.5 rounded">
@@ -230,9 +220,7 @@ export default function ProductDetail() {
               )}
             </div>
 
-            {/* Количество + кнопки */}
             <div className="flex items-center gap-3 flex-wrap">
-              {/* Счётчик */}
               <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -253,7 +241,6 @@ export default function ProductDetail() {
                 </button>
               </div>
 
-              {/* Добавить в корзину */}
               <button
                 onClick={handleAdd}
                 className="flex items-center gap-2 bg-[#E44B26] hover:bg-[#c93f1e]
@@ -262,7 +249,6 @@ export default function ProductDetail() {
                 <ShoppingCart size={16} /> Add To Cart
               </button>
 
-              {/* Вишлист */}
               <button
                 className="w-10 h-10 border border-gray-200 rounded-lg flex items-center
                                  justify-center text-gray-400 hover:text-[#E44B26] hover:border-[#E44B26]
@@ -271,7 +257,6 @@ export default function ProductDetail() {
                 <Heart size={16} />
               </button>
 
-              {/* Просмотр */}
               <button
                 className="w-10 h-10 border border-gray-200 rounded-lg flex items-center
                                  justify-center text-gray-400 hover:text-[#E44B26] hover:border-[#E44B26]
@@ -283,7 +268,6 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* ── Вкладки ── */}
         <div className="mt-12">
           <div className="flex border-b border-gray-200 gap-6 mb-6">
             {TABS.map((tab) => (
@@ -343,7 +327,6 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* ── Похожие товары ── */}
         <div className="mt-14">
           <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
             Popular Products

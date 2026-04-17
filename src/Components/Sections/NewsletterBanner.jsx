@@ -1,16 +1,11 @@
 import { useState } from "react";
 import newsletterImg from "../../assets/images/NewsLetterBanner-img.png";
 
-/**
- * Баннер подписки на рассылку.
- * Зелёный фон, иллюстрация курьера, форма email.
- */
 export default function NewsletterBanner() {
   const [email, setEmail] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    // TODO: POST на Supabase или email-сервис
     setEmail("");
   }
 
@@ -20,7 +15,6 @@ export default function NewsletterBanner() {
         className="bg-[#EDF6EE] rounded-2xl px-8 py-10 flex flex-col
                      gap-6 relative overflow-hidden"
       >
-        {/* Декоративный паттерн */}
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -30,7 +24,6 @@ export default function NewsletterBanner() {
           }}
         />
 
-        {/* Текст */}
         <div className="relative z-10 text-center md:text-left">
           <h2 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight mb-2">
             Stay home &amp; get your daily
@@ -43,7 +36,6 @@ export default function NewsletterBanner() {
           </p>
         </div>
 
-        {/* Форма */}
         <form
           onSubmit={handleSubmit}
           className="flex relative z-10 w-full md:max-w-[473px]"
@@ -82,7 +74,6 @@ export default function NewsletterBanner() {
           </button>
         </form>
 
-        {/* Картинка курьера */}
         <img
           src={newsletterImg}
           alt="Delivery"

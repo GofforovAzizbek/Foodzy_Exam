@@ -1,19 +1,11 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-/**
- * Zustand store для корзины.
- * persist — сохраняет состояние в localStorage автоматически.
- *
- * Структура cartItem:
- *   { id, name, price, image_url, quantity }
- */
 const useCartStore = create(
   persist(
     (set, get) => ({
       items: [],
 
-      // Добавить товар (или увеличить кол-во если уже есть)
       addItem: (product) => {
         const { items } = get()
         const existing = items.find((i) => i.id === product.id)
@@ -28,12 +20,10 @@ const useCartStore = create(
         }
       },
 
-      // Убрать один экземпляр товара
       removeItem: (id) => {
         set({ items: get().items.filter((i) => i.id !== id) })
       },
 
-      // Изменить количество товара
       updateQuantity: (id, quantity) => {
         if (quantity < 1) return
         set({
@@ -41,10 +31,8 @@ const useCartStore = create(
         })
       },
 
-      // Очистить корзину
       clearCart: () => set({ items: [] }),
 
-      // Вычисляемые значения
       get totalItems() {
         return get().items.reduce((sum, i) => sum + i.quantity, 0)
       },
@@ -53,7 +41,7 @@ const useCartStore = create(
       },
     }),
     {
-      name: 'cart-storage', // ключ в localStorage
+      name: 'cart-storage',
     }
   )
 )

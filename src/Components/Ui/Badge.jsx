@@ -1,7 +1,3 @@
-/**
- * Бейдж для карточки товара: Hot, Sale, New, -14% и т.д.
- * color: 'red' | 'blue' | 'green' | 'orange' | 'pink'
- */
 const colors = {
   red:    'bg-[#E44B26] text-white',
   blue:   'bg-[#4096EE] text-white',
@@ -10,7 +6,6 @@ const colors = {
   pink:   'bg-pink-500 text-white',
 }
 
-// Автоматически выбираем цвет по тексту бейджа
 function getColor(label) {
   const l = label?.toLowerCase() ?? ''
   if (l === 'hot')  return 'red'

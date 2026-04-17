@@ -1,5 +1,4 @@
 // =====================================================
-// PRODUCT CARD — карточка товара (grid и list вид)
 // =====================================================
 import { Link } from 'react-router-dom'
 import { useCartStore } from '@/store/cartStore'
@@ -25,14 +24,12 @@ export function ProductCard({ product, view = 'grid' }: ProductCardProps) {
 
   return (
     <div className="product-card fade-in-up group">
-      {/* Бейдж (Hot/Sale/New) */}
       {product.badge && (
         <div style={{ position: 'absolute', top: '12px', left: '12px', zIndex: 2 }}>
           <Badge type={product.badge} />
         </div>
       )}
 
-      {/* Кнопка вишлиста */}
       <button
         onClick={() => toggleWishlist(product.id)}
         title={inWishlist ? 'Убрать из вишлиста' : 'В вишлист'}
@@ -43,7 +40,7 @@ export function ProductCard({ product, view = 'grid' }: ProductCardProps) {
           borderRadius: '50%', width: '32px', height: '32px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           cursor: 'pointer', transition: 'all 0.2s',
-          opacity: 0, // показываем при hover через group
+          opacity: 0,
         }}
         className="group-hover:opacity-100"
       >
@@ -53,7 +50,6 @@ export function ProductCard({ product, view = 'grid' }: ProductCardProps) {
         </svg>
       </button>
 
-      {/* Изображение */}
       <Link to={`/products/${product.slug}`}>
         <div style={{
           height: '190px', display: 'flex', alignItems: 'center',
@@ -71,18 +67,14 @@ export function ProductCard({ product, view = 'grid' }: ProductCardProps) {
         </div>
       </Link>
 
-      {/* Инфо */}
       <div style={{ padding: '0.875rem 1rem 1rem' }}>
-        {/* Категория */}
         <p style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)',
           textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>
           {product.category?.name ?? '—'}
         </p>
 
-        {/* Рейтинг */}
         <Rating value={product.rating} count={product.reviews_count} />
 
-        {/* Название */}
         <Link to={`/products/${product.slug}`}
           style={{ display: 'block', marginTop: '6px', marginBottom: '8px',
             fontWeight: 600, fontSize: '0.9rem', color: 'var(--color-text)',
@@ -92,7 +84,6 @@ export function ProductCard({ product, view = 'grid' }: ProductCardProps) {
           {product.name}
         </Link>
 
-        {/* Цена + кнопка */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span className="price-current">{formatPrice(product.price)}</span>
@@ -119,7 +110,6 @@ export function ProductCard({ product, view = 'grid' }: ProductCardProps) {
   )
 }
 
-// --------- List вид карточки ---------
 function ProductListItem({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem)
 
@@ -131,7 +121,6 @@ function ProductListItem({ product }: { product: Product }) {
     }}
       className="hover:shadow-md"
     >
-      {/* Изображение */}
       <Link to={`/products/${product.slug}`} style={{ flexShrink: 0 }}>
         <div style={{ width: '120px', height: '120px', display: 'flex',
           alignItems: 'center', justifyContent: 'center',
@@ -144,7 +133,6 @@ function ProductListItem({ product }: { product: Product }) {
         </div>
       </Link>
 
-      {/* Контент */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem' }}>
           <div>
@@ -171,7 +159,6 @@ function ProductListItem({ product }: { product: Product }) {
             )}
           </div>
 
-          {/* Цена и кнопка */}
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
             <div style={{ marginBottom: '8px' }}>
               <span className="price-current" style={{ fontSize: '1.1rem' }}>

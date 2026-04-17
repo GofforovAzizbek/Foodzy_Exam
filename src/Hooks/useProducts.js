@@ -12,16 +12,14 @@ import {
 } from "../Api/products";
 import { QUERY_KEYS } from "../constants/queryKeys";
 
-// Список товаров с фильтрами (для страницы Shop)
 export function useProducts(params = {}) {
   return useQuery({
     queryKey: QUERY_KEYS.products.list(params),
     queryFn: () => fetchProducts(params),
-    keepPreviousData: true, // не мигает при смене страницы
+    keepPreviousData: true,
   });
 }
 
-// Один товар по id
 export function useProduct(id) {
   return useQuery({
     queryKey: QUERY_KEYS.products.detail(id),
@@ -30,7 +28,6 @@ export function useProduct(id) {
   });
 }
 
-// Популярные товары (главная)
 export function usePopularProducts(limit = 10) {
   return useQuery({
     queryKey: [...QUERY_KEYS.products.popular, limit],
@@ -54,7 +51,6 @@ export function useDeals(limit = 4) {
   });
 }
 
-// Top Selling / Trending / Recently Added / Top Rated — для секции TopLists
 export function useTopSelling(limit = 3) {
   return useQuery({
     queryKey: [...QUERY_KEYS.products.topSelling, limit],

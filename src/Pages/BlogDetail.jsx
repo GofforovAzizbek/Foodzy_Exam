@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "../Components/Ui/Breadcrumb";
 import Pagination from "../Components/Ui/Pagination";
 
-// Статичные данные (пока нет таблицы blogs)
 const POST = {
   id: 1,
   title: "Health Benefits of a Row food",
@@ -46,7 +45,6 @@ const GALLERY_IMGS = [
 export default function BlogDetail() {
   return (
     <div>
-      {/* Заголовок */}
       <div className="bg-[#E44B26] py-5">
         <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
           <h1 className="text-white font-bold text-xl">Blog</h1>
@@ -61,9 +59,7 @@ export default function BlogDetail() {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
-        {/* ── Статья ── */}
         <article className="flex-1 min-w-0">
-          {/* Главное фото */}
           <div className="rounded-xl overflow-hidden mb-5">
             <img
               src={POST.image}
@@ -72,7 +68,6 @@ export default function BlogDetail() {
             />
           </div>
 
-          {/* Мета */}
           <div className="flex items-center gap-3 text-xs text-gray-400 mb-3">
             <span className="text-[#E44B26] font-medium">By {POST.author}</span>
             <span>|</span>
@@ -83,12 +78,10 @@ export default function BlogDetail() {
 
           <h1 className="text-xl font-bold text-gray-900 mb-4">{POST.title}</h1>
 
-          {/* Текст */}
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
             {POST.body[0]}
           </p>
 
-          {/* Два фото */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             {POST.subImages.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden">
@@ -114,7 +107,6 @@ export default function BlogDetail() {
             {POST.body[1]}
           </p>
 
-          {/* Цитата */}
           <div className="border-l-4 border-[#E44B26] pl-4 mb-4">
             <p className="text-[#E44B26] font-semibold italic">{POST.quote}</p>
           </div>
@@ -123,7 +115,6 @@ export default function BlogDetail() {
             {POST.body[2]}
           </p>
 
-          {/* Теги + соцсети */}
           <div className="flex items-center justify-between flex-wrap gap-3 border-t border-gray-100 pt-4">
             <div className="flex gap-2 flex-wrap">
               {POST.tags.map((tag) => (
@@ -152,9 +143,7 @@ export default function BlogDetail() {
           <Pagination currentPage={1} totalPages={3} onPageChange={() => {}} />
         </article>
 
-        {/* ── Сайдбар ── */}
         <aside className="lg:w-64 flex-shrink-0 space-y-6">
-          {/* Поиск */}
           <div className="flex">
             <input
               type="text"
@@ -180,7 +169,6 @@ export default function BlogDetail() {
             </button>
           </div>
 
-          {/* Категории */}
           <div>
             <h4 className="font-bold text-gray-900 mb-3">Category</h4>
             <ul className="space-y-2">

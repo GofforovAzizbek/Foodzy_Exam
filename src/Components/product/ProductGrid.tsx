@@ -1,5 +1,4 @@
 // =====================================================
-// PRODUCT GRID — сетка карточек товаров
 // =====================================================
 import { ProductCard } from './ProductCard'
 import { ProductCardSkeleton } from '@/components/ui/Spinner'

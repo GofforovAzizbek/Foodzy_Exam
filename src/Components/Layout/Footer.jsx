@@ -7,7 +7,6 @@ import phoneIcon from '../../assets/icons/footer-phone-icon.svg'
 import facebookIcon from '../../assets/icons/facebook.svg'
 import xIcon from '../../assets/icons/x.svg'
 import instagramIcon from '../../assets/icons/instagram.svg'
-// Превью фото для галереи в футере
 import footerImg1 from '../../assets/icons/footer-image1.svg'
 import footerImg2 from '../../assets/icons/footer-image2.svg'
 import footerImg3 from '../../assets/icons/footer-image3.svg'
@@ -34,16 +33,11 @@ const CATEGORY_LINKS = [
 
 const GALLERY_IMGS = [footerImg1, footerImg2, footerImg3, footerImg4, footerImg5]
 
-/**
- * Подвал сайта.
- * Содержит: инфо о компании, ссылки, категории, форму подписки, галерею.
- */
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100 mt-16">
       <div className="max-w-[1200px] mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        {/* ── Колонка 1: О компании ── */}
         <div>
           <Link to="/" className="flex items-center gap-2 mb-4">
             <img src={logo} alt="Foodzy" className="h-8 w-8" />
@@ -74,7 +68,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* ── Колонка 2: Company ── */}
         <div>
           <h4 className="font-semibold text-gray-900 mb-4">Company</h4>
           <ul className="space-y-2">
@@ -91,7 +84,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* ── Колонка 3: Category ── */}
         <div>
           <h4 className="font-semibold text-gray-900 mb-4">Category</h4>
           <ul className="space-y-2">
@@ -108,11 +100,9 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* ── Колонка 4: Newsletter + Gallery ── */}
         <div>
           <h4 className="font-semibold text-gray-900 mb-4">Subscribe Our Newsletter</h4>
 
-          {/* Форма подписки */}
           <div className="flex mb-4">
             <input
               type="email"
@@ -128,7 +118,6 @@ export default function Footer() {
             </button>
           </div>
 
-          {/* Соцсети */}
           <div className="flex items-center gap-3 mb-4">
             <a href="#" aria-label="Facebook" className="hover:opacity-70 transition-opacity">
               <img src={facebookIcon} alt="Facebook" className="w-5 h-5" />
@@ -141,7 +130,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Галерея */}
           <div className="grid grid-cols-5 gap-1">
             {GALLERY_IMGS.map((img, idx) => (
               <div key={idx} className="aspect-square rounded overflow-hidden bg-gray-50">
@@ -156,7 +144,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Нижняя строка ── */}
       <div className="border-t border-gray-100">
         <div className="max-w-[1200px] mx-auto px-4 py-4 text-center text-sm text-gray-400">
           © 2025{' '}
